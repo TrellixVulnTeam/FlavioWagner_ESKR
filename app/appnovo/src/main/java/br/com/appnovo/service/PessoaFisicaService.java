@@ -1,43 +1,22 @@
 package br.com.appnovo.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.appnovo.dto.PessoaFisicaDTO;
-import br.com.appnovo.service.interfaces.ICustomService;
+import br.com.appnovo.repository.PessoaFisicaRepository;
 
 @Service
-public class PessoaFisicaService implements ICustomService<PessoaFisicaDTO, Long> {
+public class PessoaFisicaService extends CustomService<PessoaFisicaRepository, PessoaFisicaDTO, Long> {
+	@Autowired
+	PessoaFisicaRepository fisicaRepository;
 
 	@Override
-	public List<PessoaFisicaDTO> Listar() {
-		return new ArrayList<PessoaFisicaDTO>();
+	public void LoadData() {
+		setRepository(this.fisicaRepository);		
 	}
 
-	@Override
-	public PessoaFisicaDTO Item(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public PessoaFisicaDTO Inserir(PessoaFisicaDTO item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PessoaFisicaDTO Atualizar(PessoaFisicaDTO item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean Deletar(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }
