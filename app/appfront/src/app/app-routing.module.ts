@@ -29,6 +29,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { ConfiguracoesComponent } from './components/gerenciar/configuracoes/configuracoes.component';
+import { PerfilComponent } from './components/gerenciar/perfil/perfil.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([

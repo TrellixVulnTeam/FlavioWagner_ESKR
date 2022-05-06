@@ -141,6 +141,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import { PerfilComponent } from './components/gerenciar/perfil/perfil.component';
 
 
 @NgModule({
@@ -276,6 +277,7 @@ import { AccessComponent } from './components/access/access.component';
         NotfoundComponent,
         AccessComponent,
         ConfiguracoesComponent,
+        PerfilComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
