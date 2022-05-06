@@ -1,11 +1,12 @@
-import { TesteComponent } from './components/teste/teste.component';
+import { ConfiguracoesComponent } from './components/gerenciar/configuracoes/configuracoes.component';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+
 import { StyleClassModule } from 'primeng/styleclass';
 import { AccordionModule } from 'primeng/accordion';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -87,103 +88,200 @@ import { TreeModule } from 'primeng/tree';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { BlockViewer } from './components/blockviewer/blockviewer.component';
+
+import { AppCodeModule } from './components/app-code/app.code.component';
+import { AppComponent } from './app.component';
+import { AppMainComponent } from './app.main.component';
+import { AppTopBarComponent } from './app.topbar.component';
+import { AppFooterComponent } from './app.footer.component';
+import { AppConfigComponent } from './app.config.component';
+import { AppMenuComponent } from './app.menu.component';
+import { AppMenuitemComponent } from './app.menuitem.component';
+
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FormLayoutComponent } from './components/formlayout/formlayout.component';
+import { FloatLabelComponent } from './components/floatlabel/floatlabel.component';
+import { InvalidStateComponent } from './components/invalidstate/invalidstate.component';
+import { InputComponent } from './components/input/input.component';
+import { ButtonComponent } from './components/button/button.component';
+import { TableComponent } from './components/table/table.component';
+import { ListComponent } from './components/list/list.component';
+import { TreeComponent } from './components/tree/tree.component';
+import { PanelsComponent } from './components/panels/panels.component';
+import { OverlaysComponent } from './components/overlays/overlays.component';
+import { MediaComponent } from './components/media/media.component';
+import { MenusComponent } from './components/menus/menus.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { MiscComponent } from './components/misc/misc.component';
+import { EmptyComponent } from './components/empty/empty.component';
+import { ChartsComponent } from './components/charts/charts.component';
+import { FileComponent } from './components/file/file.component';
+import { DocumentationComponent } from './components/documentation/documentation.component';
+import { CrudComponent } from './components/crud/crud.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { IconsComponent } from './components/icons/icons.component';
+import { BlocksComponent } from './components/blocks/blocks.component';
+import { PaymentComponent} from './components/menus/payment.component';
+import { ConfirmationComponent } from './components/menus/confirmation.component';
+import { PersonalComponent } from './components/menus/personal.component';
+import { SeatComponent } from './components/menus/seat.component';
+import { LandingComponent } from './components/landing/landing.component';
+
+import { CountryService } from './service/countryservice';
+import { CustomerService } from './service/customerservice';
+import { EventService } from './service/eventservice';
+import { IconService } from './service/iconservice';
+import { NodeService } from './service/nodeservice';
+import { PhotoService } from './service/photoservice';
+import { ProductService } from './service/productservice';
+import { MenuService } from './service/app.menu.service';
+import { ConfigService } from './service/app.config.service';
+import { LoginComponent } from './components/login/login.component';
+import { ErrorComponent } from './components/error/error.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { AccessComponent } from './components/access/access.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TesteComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AccordionModule,
-    AutoCompleteModule,
-    AvatarModule,
-    AvatarGroupModule,
-    BadgeModule,
-    BreadcrumbModule,
-    ButtonModule,
-    CalendarModule,
-    CardModule,
-    CarouselModule,
-    CascadeSelectModule,
-    ChartModule,
-    CheckboxModule,
-    ChipsModule,
-    ChipModule,
-    CodeHighlighterModule,
-    ConfirmDialogModule,
-    ConfirmPopupModule,
-    ColorPickerModule,
-    ContextMenuModule,
-    DataViewModule,
-    DialogModule,
-    DividerModule,
-    DropdownModule,
-    FieldsetModule,
-    FileUploadModule,
-    GalleriaModule,
-    ImageModule,
-    InplaceModule,
-    InputNumberModule,
-    InputMaskModule,
-    InputSwitchModule,
-    InputTextModule,
-    InputTextareaModule,
-    KnobModule,
-    LightboxModule,
-    ListboxModule,
-    MegaMenuModule,
-    MenuModule,
-    MenubarModule,
-    MessageModule,
-    MessagesModule,
-    MultiSelectModule,
-    OrderListModule,
-    OrganizationChartModule,
-    OverlayPanelModule,
-    PaginatorModule,
-    PanelModule,
-    PanelMenuModule,
-    PasswordModule,
-    PickListModule,
-    ProgressBarModule,
-    RadioButtonModule,
-    RatingModule,
-    RippleModule,
-    ScrollPanelModule,
-    ScrollTopModule,
-    SelectButtonModule,
-    SidebarModule,
-    SkeletonModule,
-    SlideMenuModule,
-    SliderModule,
-    SplitButtonModule,
-    SplitterModule,
-    StepsModule,
-    TagModule,
-    TableModule,
-    TabMenuModule,
-    TabViewModule,
-    TerminalModule,
-    TieredMenuModule,
-    TimelineModule,
-    ToastModule,
-    ToggleButtonModule,
-    ToolbarModule,
-    TooltipModule,
-    TreeModule,
-    TreeSelectModule,
-    TreeTableModule,
-    VirtualScrollerModule,
-
-    StyleClassModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AccordionModule,
+        AutoCompleteModule,
+        AvatarModule,
+        AvatarGroupModule,
+        BadgeModule,
+        BreadcrumbModule,
+        ButtonModule,
+        CalendarModule,
+        CardModule,
+        CarouselModule,
+        CascadeSelectModule,
+        ChartModule,
+        CheckboxModule,
+        ChipsModule,
+        ChipModule,
+        CodeHighlighterModule,
+        ConfirmDialogModule,
+        ConfirmPopupModule,
+        ColorPickerModule,
+        ContextMenuModule,
+        DataViewModule,
+        DialogModule,
+        DividerModule,
+        DropdownModule,
+        FieldsetModule,
+        FileUploadModule,
+        GalleriaModule,
+        ImageModule,
+        InplaceModule,
+        InputNumberModule,
+        InputMaskModule,
+        InputSwitchModule,
+        InputTextModule,
+        InputTextareaModule,
+        KnobModule,
+        LightboxModule,
+        ListboxModule,
+        MegaMenuModule,
+        MenuModule,
+        MenubarModule,
+        MessageModule,
+        MessagesModule,
+        MultiSelectModule,
+        OrderListModule,
+        OrganizationChartModule,
+        OverlayPanelModule,
+        PaginatorModule,
+        PanelModule,
+        PanelMenuModule,
+        PasswordModule,
+        PickListModule,
+        ProgressBarModule,
+        RadioButtonModule,
+        RatingModule,
+        RippleModule,
+        ScrollPanelModule,
+        ScrollTopModule,
+        SelectButtonModule,
+        SidebarModule,
+        SkeletonModule,
+        SlideMenuModule,
+        SliderModule,
+        SplitButtonModule,
+        SplitterModule,
+        StepsModule,
+        TagModule,
+        TableModule,
+        TabMenuModule,
+        TabViewModule,
+        TerminalModule,
+        TieredMenuModule,
+        TimelineModule,
+        ToastModule,
+        ToggleButtonModule,
+        ToolbarModule,
+        TooltipModule,
+        TreeModule,
+        TreeSelectModule,
+        TreeTableModule,
+        VirtualScrollerModule,
+        AppCodeModule,
+        StyleClassModule,
+    ],
+    declarations: [
+        AppComponent,
+        AppMainComponent,
+        AppTopBarComponent,
+        AppFooterComponent,
+        AppConfigComponent,
+        AppMenuComponent,
+        AppMenuitemComponent,
+        DashboardComponent,
+        FormLayoutComponent,
+        FloatLabelComponent,
+        InvalidStateComponent,
+        InputComponent,
+        ButtonComponent,
+        TableComponent,
+        ListComponent,
+        TreeComponent,
+        PanelsComponent,
+        OverlaysComponent,
+        MenusComponent,
+        MessagesComponent,
+        MessagesComponent,
+        MiscComponent,
+        ChartsComponent,
+        EmptyComponent,
+        FileComponent,
+        IconsComponent,
+        DocumentationComponent,
+        CrudComponent,
+        TimelineComponent,
+        BlocksComponent,
+        BlockViewer,
+        MediaComponent,
+        PaymentComponent,
+        ConfirmationComponent,
+        PersonalComponent,
+        SeatComponent,
+        LandingComponent,
+        LoginComponent,
+        ErrorComponent,
+        NotfoundComponent,
+        AccessComponent,
+        ConfiguracoesComponent,
+    ],
+    providers: [
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
+        CountryService, CustomerService, EventService, IconService, NodeService,
+        PhotoService, ProductService, MenuService, ConfigService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
