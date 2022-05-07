@@ -17,22 +17,24 @@ export class AppConfigComponent implements OnInit, OnDestroy {
     scales: any[] = [12, 13, 14, 15, 16];
 
     config: AppConfig;
+    ret: AppConfig;
 
     subscription: Subscription;
 
-    constructor(public app: AppComponent, 
-                public appMain: AppMainComponent, 
-                public configService: ConfigService, 
-                public primengConfig: PrimeNGConfig) { }
+    constructor(public app: AppComponent,
+        public appMain: AppMainComponent,
+        public configService: ConfigService,
+        public primengConfig: PrimeNGConfig) { }
 
     ngOnInit() {
         this.config = this.configService.config;
-        console.log(this.config);
         this.GetThemeSite();
-        
-        //this.applyTheme();
+        this.applyTheme();
+
+        console.log(this.config);
 
         this.subscription = this.configService.configUpdate$.subscribe(config => {
+            console.log(config);
             this.config = config;
             this.scale = 14;
 
@@ -62,17 +64,17 @@ export class AppConfigComponent implements OnInit, OnDestroy {
 
     onRippleChange(ripple) {
         this.primengConfig.ripple = ripple;
-        this.configService.updateConfig({...this.config, ...{ripple}});
+        this.configService.updateConfig({ ...this.config, ...{ ripple } });
     }
 
     onInputStyleChange() {
         this.configService.updateConfig(this.config);
     }
 
-    changeTheme(theme:string, dark:boolean){
+    changeTheme(theme: string, dark: boolean) {
         let themeElement = document.getElementById('theme-css');
         themeElement.setAttribute('href', 'assets/theme/' + theme + '/theme.css');
-        this.configService.updateConfig({...this.config, ...{theme, dark}});
+        this.configService.updateConfig({ ...this.config, ...{ theme, dark } });
     }
 
     ngOnDestroy() {
@@ -81,14 +83,17 @@ export class AppConfigComponent implements OnInit, OnDestroy {
         }
     }
 
-    GetThemeSite() {
+    GetThemeSite(): void {
         this.configService.GetTheme().subscribe(resposta => {
-            this.config = resposta;
-            console.log(this.config);
-        });
-    } 
+            if (resposta.theme != null){
+                this.config = resposta;
+                this.applyTheme();
+            }
+        });        
 
-    applyTheme() {
+    }
+
+    applyTheme(): void {
         this.changeTheme(this.config.theme, this.config.dark);
     }
 }

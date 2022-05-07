@@ -1,13 +1,13 @@
-
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AppConfig } from '../api/appconfig';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class ConfigService {
 
     config: AppConfig = {
@@ -21,8 +21,8 @@ export class ConfigService {
 
     configUpdate$ = this.configUpdate.asObservable();
 
-    apiUrl : String = environment.urlAPI;
-    
+    apiUrl: String = environment.urlAPI;
+
     constructor(private http: HttpClient) { }
 
     updateConfig(config: AppConfig) {
@@ -34,9 +34,9 @@ export class ConfigService {
         return this.config;
     }
 
-    GetTheme():Observable<AppConfig>{
-        const url =  this.apiUrl + 'appconfig/1';
-        console.log(url);
-        return this.http.get<AppConfig>(url)
-      }
+    GetTheme(): Observable<AppConfig> {
+        const url = this.apiUrl + 'appconfig/1';
+        return this.http.get<AppConfig>(url);        
+    }
 }
+ 

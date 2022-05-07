@@ -1,11 +1,14 @@
 package br.com.appnovo.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.appnovo.dto.AppconfigDTO;
+import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.model.Appconfig;
 import br.com.appnovo.repository.AppconfigRepository;
 import br.com.appnovo.service.interfaces.ICustomService;
@@ -17,8 +20,15 @@ public class AppConfigService implements ICustomService<AppconfigDTO,Integer>{
 	
 	@Override
 	public List<AppconfigDTO> Listar() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<AppconfigDTO> lista = appconfigRepository.findAll()
+					               .stream()
+					               .map(x -> new AppconfigDTO(x))
+					               .collect(Collectors.toList());
+			return lista;
+		} catch (Exception e) {
+			return new ArrayList<AppconfigDTO>();
+		}	
 	}
 
 	@Override
