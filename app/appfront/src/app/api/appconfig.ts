@@ -1,6 +1,6 @@
 export interface AppConfig {
-    inputStyle?: string;
-    dark?: boolean;
     theme?: string;
+    inputStyle?: string;
     ripple?: boolean;
+    dark?: boolean;
 }

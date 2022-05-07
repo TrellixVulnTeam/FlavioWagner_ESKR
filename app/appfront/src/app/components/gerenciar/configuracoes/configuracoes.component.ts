@@ -1,27 +1,8 @@
-/*
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-configuracoes',
-  templateUrl: './configuracoes.component.html',
-  styleUrls: ['./configuracoes.component.scss']
-})
-export class ConfiguracoesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
-*/
-
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { Estado } from 'src/app/model/estado';
 import { EstadoService } from 'src/app/service/estado.service';
-import { CountryService } from '../../../service/countryservice';
-import { NodeService } from '../../../service/nodeservice';
+
 
 @Component({
     selector: 'app-configuracoes',
@@ -70,7 +51,7 @@ import { NodeService } from '../../../service/nodeservice';
   `]
 })
 export class ConfiguracoesComponent implements OnInit {
-
+ 
     estados: Estado[] = [];
 
     estadosItem: SelectItem[] = [];
@@ -78,7 +59,6 @@ export class ConfiguracoesComponent implements OnInit {
     filteredestados: Estado[];
 
     itemSelected: SelectItem;
-
 
     constructor(private service: EstadoService) { }
 
@@ -106,5 +86,5 @@ export class ConfiguracoesComponent implements OnInit {
                 this.estadosItem.push({ label: estado.nome, value: estado.uf });
             })
         });
-    }
+    }   
 }

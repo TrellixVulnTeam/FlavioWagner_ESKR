@@ -13,7 +13,7 @@ import br.com.appnovo.service.EstadoService;
 
 @RestController
 @RequestMapping("/estados")
-public class EstadoController  extends CustomClassController<EstadoService, EstadoDTO, Integer> {
+public class EstadoController extends CustomClassController<EstadoService, EstadoDTO, Integer> {
 
 	@Autowired
 	EstadoService estadoService;

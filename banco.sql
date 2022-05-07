@@ -125,3 +125,19 @@ CREATE TABLE pessoa_juridica
     CONSTRAINT pk_pessoa_juridica PRIMARY KEY (id),
     CONSTRAINT fk_pessoa_juridica_colaborador FOREIGN KEY (id) REFERENCES colaborador(id)	
 );
+
+
+    inputStyle?: string;
+    dark?: boolean;
+    theme?: string;
+    ripple?: boolean;
+
+CREATE TABLE AppConfig
+(
+    id int NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 100 CACHE 1 ),
+    theme character varying(50) NOT NULL,  
+    inputStyle character varying(50) NOT NULL, 
+    ripple boolean not null,
+    dark boolean not null,
+    CONSTRAINT pk_AppConfig PRIMARY KEY (id)
+);
