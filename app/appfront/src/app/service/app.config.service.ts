@@ -3,7 +3,6 @@ import { Observable, Subject } from 'rxjs';
 import { AppConfig } from '../api/appconfig';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
