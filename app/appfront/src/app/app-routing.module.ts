@@ -37,7 +37,7 @@ import { PerfilComponent } from './components/gerenciar/perfil/perfil.component'
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardComponent},
-                    {path: 'gerenciar/configuracoes', component: ConfiguracoesComponent},
+                    {path: 'gerenciar/configuracoes', component: PerfilComponent},
                     {path: 'uikit/formlayout', component: FormLayoutComponent},
                     {path: 'uikit/input', component: InputComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelComponent},

@@ -2,11 +2,19 @@ package br.com.appnovo.dto;
 
 import br.com.appnovo.model.Appconfig;
 
-public class AppconfigDTO {
+public class AppConfigDTO {
+	private Integer id;
 	private String theme;
 	private String inputStyle;
 	private boolean ripple;
 	private boolean dark;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}		
 	public String getTheme() {
 		return theme;
 	}
@@ -32,7 +40,7 @@ public class AppconfigDTO {
 		this.dark = dark;
 	}
 	
-	public AppconfigDTO(String theme, String inputStyle, boolean ripple, boolean dark) {
+	public AppConfigDTO(String theme, String inputStyle, boolean ripple, boolean dark) {
 		super();
 		this.theme = theme;
 		this.inputStyle = inputStyle;
@@ -40,10 +48,11 @@ public class AppconfigDTO {
 		this.dark = dark;
 	}
 	
-	public AppconfigDTO(Appconfig appConfig) {
+	public AppConfigDTO(Appconfig appConfig) {
+		this.setId(appConfig.getId());
 		this.theme = appConfig.getTheme();
-		this.inputStyle = appConfig.getInputstyle();
-		this.ripple = appConfig.isRipple();
-		this.dark = appConfig.isDark();
-	}	
+		this.inputStyle = appConfig.getInputStyle();
+		this.ripple = appConfig.getRipple();
+		this.dark = appConfig.getDark();
+	}
 }

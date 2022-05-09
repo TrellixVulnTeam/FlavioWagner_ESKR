@@ -2,8 +2,6 @@ package br.com.appnovo.controller.interfaces;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;

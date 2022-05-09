@@ -1,0 +1,23 @@
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <div class="card p-fluid">
+      <h5>Vertical</h5>
+      <div class="field">
+        <label htmlFor="name1">Nome</label>
+        <input pInputText id="name1" type="text" [(ngModel)]="pessoa.nome"/>
+      </div>
+      <div class="field">
+        <label htmlFor="email1">Nascimento</label>
+        <input pInputText id="email1" type="text" [(ngModel)]="pessoa.nascimento"/>
+      </div>
+      <div class="field">
+        <label htmlFor="age1">Descrição</label>
+        <input pInputText id="age1" type="text" [(ngModel)]="pessoa.descricao"/>
+      </div>
+      <div class="field">
+          <button pButton pRipple type="button" label="Salvar" class="p-button-success mr-2 mb-2"></button>
+          <button pButton pRipple type="button" label="Cancelar" class="p-button-danger mr-2 mb-2"></button>
+      </div>
+    </div>
+  </div>
+</div>

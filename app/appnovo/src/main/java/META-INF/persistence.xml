@@ -8,5 +8,7 @@
 		<class>br.com.appnovo.model.PessoaFisica</class>
 		<class>br.com.appnovo.model.PessoaJuridica</class>
 		<class>br.com.appnovo.model.PreMedico</class>
+		<class>br.com.appnovo.model.Appconfig</class>
+		<class>br.com.appnovo.model.Pessoa</class>
 	</persistence-unit>
 </persistence>

@@ -1,3 +1,4 @@
+import { DetalhePerfilComponent } from './components/gerenciar/perfil/detalhe.perfil.component';
 import { ConfiguracoesComponent } from './components/gerenciar/configuracoes/configuracoes.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -136,7 +137,7 @@ import { NodeService } from './service/nodeservice';
 import { PhotoService } from './service/photoservice';
 import { ProductService } from './service/productservice';
 import { MenuService } from './service/app.menu.service';
-import { ConfigService } from './service/app.config.service';
+import { ConfigService } from './service/appconfig.service';
 import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
@@ -278,6 +279,7 @@ import { PerfilComponent } from './components/gerenciar/perfil/perfil.component'
         AccessComponent,
         ConfiguracoesComponent,
         PerfilComponent,
+        DetalhePerfilComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

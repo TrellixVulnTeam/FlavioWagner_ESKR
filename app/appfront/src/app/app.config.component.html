@@ -40,7 +40,7 @@
                                 inputId="menuType2"></p-radioButton>
                 <label for="menuType2">Overlay</label>
         </div>
-        
+
         <h6>Bootstrap</h6>
         <div class="grid free-themes">
             <div class="col-3 text-center">
@@ -236,6 +236,13 @@
                 <button class="p-link" (click)="changeTheme('arya-purple', true)">
                     <img src="assets/layout/images/themes/arya-purple.png" alt="Arya Purple">
                 </button>
+            </div>
+
+            <div class="col-12 text-center">
+                <p-toast key="tst" [baseZIndex]="99999"></p-toast>
+                <p>
+                    <p-button (click)="SalvarTemaSite()">Salvar Alterações</p-button>
+                </p>
             </div>
         </div>
     </div>

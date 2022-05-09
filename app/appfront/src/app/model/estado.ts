@@ -1,5 +1,5 @@
-export interface Estado{
-    id?: number,
-    uf : string,
-    nome : string
+export class Estado{
+    id?: number;
+    uf : string;
+    nome : string;
 }

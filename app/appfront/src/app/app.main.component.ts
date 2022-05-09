@@ -1,8 +1,9 @@
+import { AppConfig } from 'src/app/model/appconfig';
+import { AppConfigComponent } from './app.config.component';
 import { Component, AfterViewInit, OnDestroy, Renderer2, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AppComponent } from './app.component';
-import { ConfigService } from './service/app.config.service';
-import { AppConfig } from './api/appconfig';
+import { ConfigService } from './service/appconfig.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -52,7 +53,7 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
     config: AppConfig;
 
     subscription: Subscription;
-    
+
     constructor(public renderer: Renderer2, public app: AppComponent, public configService: ConfigService) { }
 
     ngOnInit() {

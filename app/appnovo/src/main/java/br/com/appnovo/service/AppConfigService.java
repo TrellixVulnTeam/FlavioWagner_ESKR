@@ -5,52 +5,57 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import br.com.appnovo.dto.AppconfigDTO;
+import br.com.appnovo.dto.AppConfigDTO;
 import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.model.Appconfig;
 import br.com.appnovo.repository.AppconfigRepository;
 import br.com.appnovo.service.interfaces.ICustomService;
 
 @Service
-public class AppConfigService implements ICustomService<AppconfigDTO,Integer>{
+public class AppConfigService implements ICustomService<AppConfigDTO,Integer>{
 	@Autowired
 	AppconfigRepository appconfigRepository;
 	
 	@Override
-	public List<AppconfigDTO> Listar() {
+	public List<AppConfigDTO> Listar() {
 		try {
-			List<AppconfigDTO> lista = appconfigRepository.findAll()
+			List<AppConfigDTO> lista = appconfigRepository.findAll()
 					               .stream()
-					               .map(x -> new AppconfigDTO(x))
+					               .map(x -> new AppConfigDTO(x))
 					               .collect(Collectors.toList());
 			return lista;
 		} catch (Exception e) {
-			return new ArrayList<AppconfigDTO>();
+			return new ArrayList<AppConfigDTO>();
 		}	
 	}
 
 	@Override
-	public AppconfigDTO Item(Integer id) {
+	public AppConfigDTO Item(Integer id) {
 		try {
-			return new AppconfigDTO( appconfigRepository.findById(id).get() );
+			return new AppConfigDTO( appconfigRepository.findById(id).get() );
 			
 		} catch (Exception e) {
-			return new AppconfigDTO(new Appconfig());
+			return new AppConfigDTO(new Appconfig());
 		}	
 	}
 
 	@Override
-	public AppconfigDTO Inserir(AppconfigDTO item) {
+	public AppConfigDTO Inserir(AppConfigDTO item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AppconfigDTO Atualizar(AppconfigDTO item) {
-		// TODO Auto-generated method stub
-		return null;
+	public AppConfigDTO Atualizar(AppConfigDTO item) {
+		Appconfig config = appconfigRepository.findById(item.getId()).get();
+		config.setTheme(item.getTheme());
+		config.setInputStyle(item.getInputStyle());
+		config.setDark(item.isDark());
+		config.setRipple(item.isRipple());
+		return new AppConfigDTO( appconfigRepository.save(config));
 	}
 
 	@Override
