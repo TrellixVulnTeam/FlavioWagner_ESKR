@@ -1,3 +1,6 @@
+import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PessoaService } from 'src/app/service/pessoa.service';
 import { DetalhePerfilComponent } from './components/gerenciar/perfil/detalhe.perfil.component';
 import { ConfiguracoesComponent } from './components/gerenciar/configuracoes/configuracoes.component';
 import { NgModule } from '@angular/core';
@@ -234,6 +237,7 @@ import { PerfilComponent } from './components/gerenciar/perfil/perfil.component'
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
+        DialogModule
     ],
     declarations: [
         AppComponent,
@@ -284,7 +288,11 @@ import { PerfilComponent } from './components/gerenciar/perfil/perfil.component'
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService
+        PhotoService, ProductService, MenuService, ConfigService,
+        PessoaService,
+        DialogService,
+        MessageService,
+        DynamicDialogRef
     ],
     bootstrap: [AppComponent]
 })

@@ -1,9 +1,8 @@
 CREATE TABLE estado
 (
-    id int NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 50 CACHE 1 ),
-    sigla character varying(2) NOT NULL,
+    uf character varying(2) NOT NULL,
     nome character varying(50) NOT NULL,
-    CONSTRAINT pk_estado PRIMARY KEY (id)
+    CONSTRAINT pk_estado PRIMARY KEY (uf)
 );
 
 INSERT INTO estado(sigla,nome) VALUES('AC','ACRE');
@@ -118,6 +117,35 @@ CREATE TABLE pre_medico
 	                                               (nacionalidade <> 'B' and nascimento_exterior = TRUE))	
 );
 
+
+
+CREATE TABLE medico
+(
+    id bigint NOT NULL,
+	constraint pk_medico primary key(id),
+	constraint fk_medico_pf foreign key(id) references pessoa_fisica(id)
+);
+
+create table medico_estado
+(
+	id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999999999999 CACHE 1 ),
+	id_medico bigint not null,
+	uf character varying(2) not null,
+	nu_crm int not null;
+	dt_inscricao date not null,
+	constraint pk_medico_estado primary key(id),
+	constraint fk_medico_estado_medico(id_medico) references medico(id),
+	constraint fk_medico_estado_estado(uf) references estado(uf),
+	constraint uk_medico_estado unique(id_medico,uf,nu_crm)	
+)
+
+
+	
+	
+
+
+
+
 CREATE TABLE pessoa_juridica
 (
     id bigint NOT NULL,
@@ -136,5 +164,3 @@ CREATE TABLE AppConfig
     dark boolean not null,
     CONSTRAINT pk_AppConfig PRIMARY KEY (id)
 );
-
-insert into appconfig(theme,input_style, ripple,dark)values('lara-dark-teal','Outlined',false,false);

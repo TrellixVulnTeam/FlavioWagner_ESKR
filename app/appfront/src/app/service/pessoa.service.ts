@@ -20,8 +20,9 @@ export class PessoaService implements ICustom<Pessoa,number>{
   }
 
   Item(id: number): Observable<Pessoa> {
-    const param:any = id;
-    throw this.http.get<Pessoa>(this.URLServico,param);
+    let url = this.URLServico + '/' + id;
+    console.log(url);
+    return this.http.get<Pessoa>(url);
   }
 
   Alterar(item: Pessoa): Observable<Pessoa> {
