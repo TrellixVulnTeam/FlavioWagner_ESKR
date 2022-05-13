@@ -1,3 +1,5 @@
+import { Mensagem } from './model/tipos/mensagem';
+import { MessageService } from 'primeng/api';
 import { AppConfig } from 'src/app/model/appconfig';
 import { AppConfigComponent } from './app.config.component';
 import { Component, AfterViewInit, OnDestroy, Renderer2, OnInit } from '@angular/core';
@@ -9,6 +11,17 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-main',
     templateUrl: './app.main.component.html',
+    styles: [`
+		:host ::ng-deep .p-message {
+			margin-left: .25em;
+		}
+
+        :host ::ng-deep .p-toast{
+            margin-top: 5.70em;
+            z-index:99999;
+        }
+    `],
+    providers: [MessageService],
     animations: [
         trigger('submenu', [
             state('hidden', style({
@@ -54,7 +67,10 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
 
     subscription: Subscription;
 
-    constructor(public renderer: Renderer2, public app: AppComponent, public configService: ConfigService) { }
+    constructor(public renderer: Renderer2,
+                public app: AppComponent,
+                public configService: ConfigService,
+                private service: MessageService) { }
 
     ngOnInit() {
         this.config = this.configService.config;
@@ -179,5 +195,11 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
+    }
+
+    ShowMessage(msg:Mensagem) {
+      let valor: any = { key: 'tst', severity: msg.severity, summary: msg.summary, detail: msg.detail };
+      console.log(valor);
+      this.service.add(valor);
     }
 }

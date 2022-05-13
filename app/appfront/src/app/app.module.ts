@@ -283,7 +283,7 @@ import { PerfilComponent } from './components/gerenciar/perfil/perfil.component'
         AccessComponent,
         ConfiguracoesComponent,
         PerfilComponent,
-        DetalhePerfilComponent,
+        DetalhePerfilComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

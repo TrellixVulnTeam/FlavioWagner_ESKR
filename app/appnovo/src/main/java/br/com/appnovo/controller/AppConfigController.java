@@ -47,7 +47,4 @@ public class AppConfigController implements ICustomController<AppConfigDTO, Inte
 		// TODO Auto-generated method stub
 		return appConfigService.Deletar(id);
 	}
-	
-	
-
 }

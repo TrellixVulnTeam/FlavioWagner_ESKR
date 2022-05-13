@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PrimeNGConfig, MessageService, Message } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { AppConfig } from './model/appconfig';
+import { Mensagem, MessagemClass } from './model/tipos/mensagem';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import { ConfigService } from './service/appconfig.service';
+
 
 @Component({
   selector: 'app-config',
@@ -116,15 +118,9 @@ export class AppConfigComponent implements OnInit, OnDestroy {
     console.log(opcao);
 
     if (opcao) {
-      this.ShowMessage('success', 'Solicitação Processada', 'Tema alterado com sucesso!');
+      this.appMain.ShowMessage(new Mensagem(MessagemClass.Success, 'Solicitação Processada', 'Tema alterado com sucesso!'));
     } else {
-      this.ShowMessage('error', 'Solicitação não Processada', 'Tema não foi alterado!');
+      this.appMain.ShowMessage(new Mensagem(MessagemClass.Error , 'Solicitação não Processada', 'Tema não foi alterado!'));
     }
   };
-
-
-  ShowMessage(tipoSeverity: String, msgSummary: String, msgDetail: String) {
-    let valor: any = { key: 'tst', severity: tipoSeverity, summary: msgSummary, detail: msgDetail };
-    this.service.add(valor);
-  }
 }
