@@ -70,11 +70,13 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
     constructor(public renderer: Renderer2,
                 public app: AppComponent,
                 public configService: ConfigService,
-                private service: MessageService) { }
+                private service: MessageService,
+                private msg: Mensagem) { }
 
     ngOnInit() {
         this.config = this.configService.config;
         this.subscription = this.configService.configUpdate$.subscribe(config => this.config = config);
+        this.msg.emissor.subscribe(x=>{this.service.add(x)});
     }
 
     ngAfterViewInit() {
@@ -196,10 +198,10 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
             this.subscription.unsubscribe();
         }
     }
-
+/*
     ShowMessage(msg:Mensagem) {
       let valor: any = { key: 'tst', severity: msg.severity, summary: msg.summary, detail: msg.detail };
       console.log(valor);
       this.service.add(valor);
-    }
+    }*/
 }

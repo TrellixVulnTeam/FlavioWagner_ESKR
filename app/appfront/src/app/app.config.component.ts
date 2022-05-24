@@ -2,10 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PrimeNGConfig, MessageService, Message } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { AppConfig } from './model/appconfig';
-import { Mensagem, MessagemClass } from './model/tipos/mensagem';
+import { Mensagem, TipoMessagem } from './model/tipos/mensagem';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import { ConfigService } from './service/appconfig.service';
+import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -25,10 +26,10 @@ import { ConfigService } from './service/appconfig.service';
 })
 export class AppConfigComponent implements OnInit, OnDestroy {
 
+
   msgs: Message[] = [];
 
   scale: number = 14;
-
   scales: any[] = [12, 13, 14, 15, 16];
 
   config: AppConfig;
@@ -40,7 +41,8 @@ export class AppConfigComponent implements OnInit, OnDestroy {
     public appMain: AppMainComponent,
     public configService: ConfigService,
     private service: MessageService,
-    public primengConfig: PrimeNGConfig) { }
+    public primengConfig: PrimeNGConfig,
+    private msg:Mensagem) { }
 
   ngOnInit() {
     this.config = this.configService.config;
@@ -115,12 +117,11 @@ export class AppConfigComponent implements OnInit, OnDestroy {
 
   SalvarTemaSite(): void {
     let opcao:boolean = this.configService.SalvarTema(this.config);
-    console.log(opcao);
 
     if (opcao) {
-      this.appMain.ShowMessage(new Mensagem(MessagemClass.Success, 'Solicitação Processada', 'Tema alterado com sucesso!'));
+      this.msg.show('Solicitação Processada', 'Tema alterado com sucesso!');
     } else {
-      this.appMain.ShowMessage(new Mensagem(MessagemClass.Error , 'Solicitação não Processada', 'Tema não foi alterado!'));
+      this.msg.show('Solicitação não Processada', 'Tema não foi alterado!');
     }
-  };
+  }
 }

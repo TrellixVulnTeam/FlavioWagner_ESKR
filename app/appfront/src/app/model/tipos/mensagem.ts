@@ -1,19 +1,24 @@
-export enum MessagemClass {
+import { EventEmitter, Injectable } from '@angular/core';
+
+export enum TipoMessagem {
   Success = 'success',
   Info = 'info',
-  Warning = 'warning',
+  Warning = 'warn',
   Error = 'error',
   Custom = 'custom'
 }
 
+@Injectable({
+  providedIn:'root'
+})
 export class Mensagem{
-  severity:MessagemClass
-  summary:String;
-  detail:String;
+  public emissor = new EventEmitter();
 
-  constructor(severity:MessagemClass,summary:String,detail:String){
-    this.severity = severity;
-    this.summary = summary;
-    this.detail = detail;
+  constructor(){
+
+  }
+
+  show(summary:String,detail:String,severity:TipoMessagem = TipoMessagem.Success){
+    return this.emissor.emit({ key: 'tst', severity: severity, summary: summary, detail: detail });
   }
 }

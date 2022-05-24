@@ -1,12 +1,18 @@
-<div class="p-inputgroup">
-  <h5>Nome</h5>
-  <input pInputText id="nome" type="text" [(ngModel)]="pessoa.nome" />
-</div>
-<div class="p-inputgroup">
-  <h5>Nascimento</h5>
-  <input pInputText id="nascimento" type="text" [(ngModel)]="pessoa.nascimento" />
-</div>
-<div class="p-inputgroup">
-  <h5>Descrição</h5>
-  <input pInputText id="descricao" type="text" [(ngModel)]="pessoa.descricao" />
+<div class="grid p-fluid">
+  <div class="row">
+    <div class="field md:col-2">
+      <label>Nome</label>
+      <input pInputText id="nome" type="text" [(ngModel)]="pessoa.nome" />
+    </div>
+    <div class="field md:col-2">
+      <label>Nascimento</label>
+      <input pInputText id="nascimento" type="text" [(ngModel)]="pessoa.nascimento" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="field md:col-2">
+      <label>Descrição</label>
+      <input pInputText id="descricao" type="text" [(ngModel)]="pessoa.descricao" />
+    </div>
+  </div>
 </div>
