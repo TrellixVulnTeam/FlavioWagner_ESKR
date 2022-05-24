@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "br.org.cfm.chamados.config.ApplicationProperties",
+      "sourceType": "br.org.cfm.chamados.config.ApplicationProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
